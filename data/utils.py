@@ -8,6 +8,8 @@ class Downloader:
         pass
 
     def download_image(self, url, folder_path, filename):
+        if not os.path.exists(folder_path):
+            os.mkdir(folder_path)
         response = requests.get(url, stream=True)
         with open(os.path.join(folder_path, filename), 'wb') as file:
             for chunk in response.iter_content(chunk_size=1024):
