@@ -13,7 +13,8 @@ driver = create_chrome_driver("https://www.inaturalist.org/observations?place_id
 time.sleep(5)
 
 image_links = driver.find_elements("xpath", "//a[@class='img  ']")
-name_links = driver.find_elements("xpath", "//a[@class='display-name sciname' and @ng-show='taxon.id']")
+name_links = driver.find_elements("xpath", "//a[@class='display-name sciname' and @href='/observations/*']")
 
 print(len(image_links))
 print(len(name_links))
+
