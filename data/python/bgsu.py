@@ -19,3 +19,4 @@ select = Select(dropdown)
 select.select_by_value("Achnanthes")
 driver.find_element(By.ID, "ContentPlaceHolder1_btnShowThumbnails")
 
+images = driver.find_elements("xpath", "//img[contains(@src, 'diatom')]")

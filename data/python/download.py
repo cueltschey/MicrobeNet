@@ -26,7 +26,7 @@ def download_images(filename):
 
         d.download_image(item["image_url"][1:-1], os.path.join(desk_path, genus), f"inaturalist_{count}.jpg")
         
-for filename in os.listdir(json_path):
+for filename in os.listdir(json_path)[30:]:
     download_images(filename)
 
 

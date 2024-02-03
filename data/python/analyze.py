@@ -15,7 +15,7 @@ def get_length(directory, file):
     analysis.append({filepath:count})
     return count
 
-directory = os.getcwd()
+directory = os.path.join(os.getcwd(), "..")
 total = 0
 
 for filename in os.listdir(directory):
