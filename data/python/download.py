@@ -6,14 +6,14 @@ import random
 d = Downloader()
 results = list()
 
-json_path = "C:\\Users\\paige\\Desktop\\microbe-id\\data"
+json_path = "../"
 
 def download_images(filename):
     with open(os.path.join(json_path, filename), "r") as f:
         results = json.load(f)
 
 
-    desk_path = "C:\\Users\\paige\\Desktop\\microbe_images"
+    desk_path = "../../../microbe_images/"
     count = random.randint(0,200) * 100
     for item in results:
         count += 1
