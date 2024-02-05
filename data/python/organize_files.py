@@ -32,15 +32,13 @@ def find_many():
             print(directory, count)
             os.rename(os.path.join("../../../microbe_images/", directory), os.path.join("../../../microbe_images/100-over", directory))
 
-find_many()
 
 total = 0
 for directory in os.listdir("../../../microbe_images/"):
+    count = 0
     for file in os.listdir(os.path.join("../../../microbe_images/", directory)):
-        count = 0
-        for f in os.listdir(os.path.join(f"../../../microbe_images/{directory}", file)):
-            count += 1
-            total += 1
-        print(directory, count)
+        count += 1
+        total += 1
+    print(directory, count)
 
 print("Total: ", total)
