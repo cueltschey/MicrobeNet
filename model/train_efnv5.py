@@ -1,25 +1,32 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.applications import EfficientNetV2
+from tensorflow.keras import layers, models
 
-def create_cnn_model(input_shape, num_classes):
-    model = Sequential()
-    model.add(Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))
-    model.add(MaxPooling2D((2, 2)))
-    model.add(Conv2D(64, (3, 3), activation='relu'))
-    model.add(MaxPooling2D((2, 2)))
-    model.add(Conv2D(128, (3, 3), activation='relu'))
-    model.add(MaxPooling2D((2, 2)))
-    model.add(Flatten())
-    model.add(Dense(128, activation='relu'))
-    model.add(Dense(num_classes, activation='softmax'))
-    
+def create_efficientnetv2_model(input_shape, num_classes):
+    base_model = EfficientNetV2.EfficientNetV2S(
+        include_top=False,
+        input_shape=input_shape,
+        weights='imagenet',
+        pooling='avg'
+    )
+
+    # Freeze the pre-trained weights
+    base_model.trainable = False
+
+    model = models.Sequential([
+        base_model,
+        layers.Flatten(),
+        layers.Dense(256, activation='relu'),
+        layers.Dropout(0.5),
+        layers.Dense(num_classes, activation='softmax')
+    ])
+
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-    
+
     return model
 
-def train_cnn(train_dir, validation_dir, input_shape, num_classes, epochs=10, batch_size=32):
+def train_cnn_with_efficientnetv2(train_dir, validation_dir, input_shape, num_classes, epochs=10, batch_size=32):
     train_datagen = ImageDataGenerator(rescale=1./255,
                                        shear_range=0.2,
                                        zoom_range=0.2,
@@ -37,7 +44,7 @@ def train_cnn(train_dir, validation_dir, input_shape, num_classes, epochs=10, ba
                                                             batch_size=batch_size,
                                                             class_mode='categorical')
 
-    model = create_cnn_model(input_shape, num_classes)
+    model = create_efficientnetv2_model(input_shape, num_classes)
 
     model.fit(train_generator,
               steps_per_epoch=train_generator.samples // batch_size,
@@ -45,10 +52,13 @@ def train_cnn(train_dir, validation_dir, input_shape, num_classes, epochs=10, ba
               validation_data=validation_generator,
               validation_steps=validation_generator.samples // batch_size)
 
+    return model
+
 # Example usage:
-train_dir = '/path/to/train_data'
-validation_dir = '/path/to/validation_data'
-input_shape = (96, 96, 3)  # Set the desired image size
+train_dir = '/media/chasuelt/MICROBES/training_dataset/'
+validation_dir = '/media/chasuelt/MICROBES/validation_dataset/'
+input_shape = (96, 64, 3)  # Adjust based on your image size and channels
 num_classes = 10  # Adjust based on the number of categories
 
-train_cnn(train_dir, validation_dir, input_shape, num_classes)
+trained_model = train_cnn_with_efficientnetv2(train_dir, validation_dir, input_shape, num_classes)
+trained_model.save("/media/chasuelt/MICROBES/model_v0")
