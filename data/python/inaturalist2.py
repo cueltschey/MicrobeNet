@@ -21,8 +21,8 @@ def get_genus_names(driver):
     return names
 
 
-def collect_images(query):
-    print(f"Searching for: {query}")
+def collect_images(query, count):
+    print(f"Searching for: {query} #{count}")
     driver = create_chrome_driver(f"https://www.inaturalist.org/observations?place_id=any&subview=table&verifiable=any&q={query}")
     urls = list()
     names = list()
@@ -56,7 +56,7 @@ def collect_images(query):
         except:
             break
     driver.quit()
-    with open(f"{query}.json", "w") as f:
+    with open(f"/mnt/c/Users/paige/Desktop/inaturalist/{query}.json", "w") as f:
         json.dump(results, f, indent=4)
 
 
@@ -64,7 +64,9 @@ def collect_images(query):
 desk_path = "/mnt/c/Users/paige/Desktop/microbe_images/"
 directories = [entry for entry in os.listdir(desk_path) if os.path.isdir(os.path.join(desk_path, entry))]
 
+count = 0
 for query in directories:
-    collect_images(query)
+    count += 1
+    collect_images(query, count)
 
 
