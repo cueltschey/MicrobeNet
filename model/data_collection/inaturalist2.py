@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from driver import create_chrome_driver
+from driver_linux import create_driver
 import time
 import json
 import os
@@ -23,7 +23,7 @@ def get_genus_names(driver):
 
 def collect_images(query):
     print(f"Searching for: {query}")
-    driver = create_chrome_driver(f"https://www.inaturalist.org/observations?place_id=any&subview=table&verifiable=any&q={query}")
+    driver = create_driver(f"https://www.inaturalist.org/observations?place_id=any&subview=table&verifiable=any&q={query}")
     urls = list()
     names = list()
     results = list()

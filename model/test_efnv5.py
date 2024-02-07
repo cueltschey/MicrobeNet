@@ -20,6 +20,7 @@ test_dir = '/media/chasuelt/MICROBES/testing_dataset/'
 # Load the trained model (replace 'path/to/saved_model' with the actual path)
 saved_model_path = '/media/chasuelt/MICROBES/model_v0'
 trained_model = tf.keras.models.load_model(saved_model_path)
+input_shape = (96,64,3)
 
 # Test the model
 test_cnn_with_efficientnetv2(trained_model, test_dir, input_shape)

@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/chasuelt/Desktop/microbe-id/data/python/inaturalist2.py", line 5, in <module>
-    from driver import create_chrome_driver
-ImportError: cannot import name 'create_chrome_driver' from 'driver' (/usr/local/lib/python3.10/dist-packages/driver/__init__.py)
