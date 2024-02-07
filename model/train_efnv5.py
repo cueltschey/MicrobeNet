@@ -1,20 +1,21 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.applications import EfficientNetV2
 from tensorflow.keras import layers, models
+import keras_cv
+import keras_core as keras
+import numpy as np
+
 
 def create_efficientnetv2_model(input_shape, num_classes):
-    base_model = EfficientNetV2.EfficientNetV2S(
-        include_top=False,
-        input_shape=input_shape,
-        weights='imagenet',
-        pooling='avg'
+    base_model = keras_cv.models.EfficientNetV2Backbone.from_preset(
+    "efficientnetv2_b0"
     )
 
     # Freeze the pre-trained weights
     base_model.trainable = False
 
     model = models.Sequential([
+        layers.Input(shape=input_shape),
         base_model,
         layers.Flatten(),
         layers.Dense(256, activation='relu'),
@@ -58,7 +59,7 @@ def train_cnn_with_efficientnetv2(train_dir, validation_dir, input_shape, num_cl
 train_dir = '/media/chasuelt/MICROBES/training_dataset/'
 validation_dir = '/media/chasuelt/MICROBES/validation_dataset/'
 input_shape = (96, 64, 3)  # Adjust based on your image size and channels
-num_classes = 10  # Adjust based on the number of categories
+num_classes = 170  # Adjust based on the number of categories
 
 trained_model = train_cnn_with_efficientnetv2(train_dir, validation_dir, input_shape, num_classes)
 trained_model.save("/media/chasuelt/MICROBES/model_v0")
