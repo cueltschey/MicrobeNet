@@ -56,12 +56,12 @@ def collect_images(query):
         except:
             break
     driver.quit()
-    with open(f"{query}.json", "w") as f:
+    with open(f"/home/chasuelt/Desktop/inaturalist2/{query}.json", "w") as f:
         json.dump(results, f, indent=4)
 
 
 
-desk_path = "/mnt/c/Users/paige/Desktop/microbe_images/"
+desk_path = "/media/chasuelt/MICROBES/microbe_images/"
 directories = [entry for entry in os.listdir(desk_path) if os.path.isdir(os.path.join(desk_path, entry))]
 
 for query in directories:
