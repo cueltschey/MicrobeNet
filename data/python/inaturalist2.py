@@ -29,8 +29,8 @@ def collect_images(query, count):
     results = list()
     scroll_chunk_size = 5  
     while True:
+        time.sleep(2)  
         for _ in range(scroll_chunk_size):
-            time.sleep(2)  
 
             new_names = get_genus_names(driver)
             new_image_urls = get_image_urls(driver)
@@ -51,7 +51,13 @@ def collect_images(query, count):
 
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         try:
-            driver.find_elements("xpath", "//a[contains(@ng-click, 'selectPage')]")[-1].click()
+            next_page = driver.find_elements("xpath", "//a[contains(@ng-click, 'selectPage')]")[-1]
+            next_page_wrapper = driver.find_elements("xpath", "//li[contains(@class, 'pagination')]")[-1]
+            print(next_page.text)
+            print(next_page_wrapper.get_attribute("class"))
+            if next_page.text != "›" or "disabled" in next_page_wrapper.get_attribute("class"):
+                break
+            next_page.click()
             print("Next Page")
         except:
             break
@@ -65,7 +71,7 @@ desk_path = "/mnt/c/Users/paige/Desktop/microbe_images/"
 directories = [entry for entry in os.listdir(desk_path) if os.path.isdir(os.path.join(desk_path, entry))]
 
 count = 0
-for query in directories:
+for query in reversed(directories):
     count += 1
     collect_images(query, count)
 
