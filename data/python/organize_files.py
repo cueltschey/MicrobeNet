@@ -34,9 +34,9 @@ def find_many():
 
 
 total = 0
-for directory in os.listdir("../../../microbe_images/"):
+for directory in os.listdir("/mnt/c/Users/paige/Desktop/microbe_images/"):
     count = 0
-    for file in os.listdir(os.path.join("../../../microbe_images/", directory)):
+    for file in os.listdir(os.path.join("/mnt/c/Users/paige/Desktop/microbe_images/", directory)):
         count += 1
         total += 1
     print(directory, count)

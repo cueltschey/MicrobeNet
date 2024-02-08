@@ -53,9 +53,8 @@ def collect_images(query, count):
         try:
             next_page = driver.find_elements("xpath", "//a[contains(@ng-click, 'selectPage')]")[-1]
             next_page_wrapper = driver.find_elements("xpath", "//li[contains(@class, 'pagination')]")[-1]
-            print(next_page.text)
             print(next_page_wrapper.get_attribute("class"))
-            if next_page.text != "›" or "disabled" in next_page_wrapper.get_attribute("class"):
+            if "disabled" in next_page_wrapper.get_attribute("class"):
                 break
             next_page.click()
             print("Next Page")
@@ -67,7 +66,7 @@ def collect_images(query, count):
 
 
 
-desk_path = "/mnt/c/Users/paige/Desktop/microbe_images/"
+desk_path = "/mnt/c/Users/paige/Desktop/old_microbe_images/"
 directories = [entry for entry in os.listdir(desk_path) if os.path.isdir(os.path.join(desk_path, entry))]
 
 count = 0
