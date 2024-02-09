@@ -70,7 +70,7 @@ desk_path = "/mnt/c/Users/paige/Desktop/old_microbe_images/"
 directories = [entry for entry in os.listdir(desk_path) if os.path.isdir(os.path.join(desk_path, entry))]
 
 count = 0
-for query in reversed(directories):
+for query in directories:
     count += 1
     collect_images(query, count)
 

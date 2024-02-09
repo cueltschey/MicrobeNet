@@ -3,25 +3,25 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-def create_chrome_driver(url, detach=True):
+def create_chrome_driver(url, detach=False):
     chrome_options = Options()
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-infobars")
-    chrome_options.add_argument("--disable-notifications")
-    chrome_options.add_argument("--disable-popup-blocking")
-    chrome_options.add_argument("--disable-default-apps")
-    chrome_options.add_argument("--disable-crash-reporter")
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument("--disable-in-process-stack-traces")
-    chrome_options.add_argument("--disable-print-preview")
-    
-    chrome_options.set_capability('pageLoadStrategy', 'none')
     if not detach:
         chrome_options.add_experimental_option("detach",False)
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-infobars")
+        chrome_options.add_argument("--disable-notifications")
+        chrome_options.add_argument("--disable-popup-blocking")
+        chrome_options.add_argument("--disable-default-apps")
+        chrome_options.add_argument("--disable-crash-reporter")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--disable-in-process-stack-traces")
+        chrome_options.add_argument("--disable-print-preview")
+        chrome_options.set_capability('pageLoadStrategy', 'none')
+
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     driver.get(url)
     return driver
