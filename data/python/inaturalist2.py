@@ -28,6 +28,7 @@ def collect_images(query, count):
     names = list()
     results = list()
     scroll_chunk_size = 5  
+    page_count = 0
     while True:
         time.sleep(2)  
         for _ in range(scroll_chunk_size):
@@ -51,6 +52,7 @@ def collect_images(query, count):
 
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         try:
+            page_count += 1
             next_page = driver.find_elements("xpath", "//a[contains(@ng-click, 'selectPage')]")[-1]
             next_page_wrapper = driver.find_elements("xpath", "//li[contains(@class, 'pagination')]")[-1]
             print(next_page_wrapper.get_attribute("class"))
@@ -58,6 +60,8 @@ def collect_images(query, count):
                 break
             next_page.click()
             print("Next Page")
+            if page_count >= 20:
+                break
         except:
             break
     driver.quit()
@@ -70,7 +74,7 @@ desk_path = "/mnt/c/Users/paige/Desktop/old_microbe_images/"
 directories = [entry for entry in os.listdir(desk_path) if os.path.isdir(os.path.join(desk_path, entry))]
 
 count = 0
-for query in directories:
+for query in directories[444:]:
     count += 1
     collect_images(query, count)
 

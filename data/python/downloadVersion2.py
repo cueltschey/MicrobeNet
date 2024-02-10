@@ -6,7 +6,7 @@ import random
 d = Downloader()
 results = list()
 
-json_path = "/mnt/c/Users/paige/Desktop/algaebase/"
+json_path = "/mnt/c/Users/paige/Desktop/inaturalist/"
 finished_path = "/mnt/c/Users/paige/Desktop/finished/"
 
 def download_images(filename):
