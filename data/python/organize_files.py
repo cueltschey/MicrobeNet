@@ -1,5 +1,6 @@
 import os
 import json
+from PIL import Image
 
 
 
@@ -11,8 +12,6 @@ def find_few():
         if count < 30 and directory != "few":
             print(directory, count)
             os.rename(os.path.join("../../../microbe_images/", directory), os.path.join("../../../microbe_images/few", directory))
-
-
 
 def find_some():
     for directory in os.listdir("../../../microbe_images/"):
@@ -39,10 +38,25 @@ def delete_EDMS():
                 os.remove(os.path.join("/media/chasuelt/MICROBES/microbe_images/", directory, file))
 
 
+def delete_small_images(directory):
+    for filename in os.listdir(directory):
+        filepath = os.path.join(directory, filename)
+        if os.path.isfile(filepath):
+            try:
+                with Image.open(filepath) as img:
+                    width, height = img.size
+                    if width < 96 or height < 64:
+                        os.remove(filepath)
+                        print(f"Deleted: {filename}")
+            except Exception as e:
+                print(f"Error processing {filename}: {e}")
+
+
 
 total = 0
 for directory in os.listdir("/media/chasuelt/MICROBES/microbe_images/"):
     count = 0
+    delete_small_images(os.path.join("/media/chasuelt/MICROBES/microbe_images/", directory))
     for file in os.listdir(os.path.join("/media/chasuelt/MICROBES/microbe_images/", directory)):
         count += 1
         total += 1
