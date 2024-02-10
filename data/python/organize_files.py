@@ -32,11 +32,18 @@ def find_many():
             print(directory, count)
             os.rename(os.path.join("../../../microbe_images/", directory), os.path.join("../../../microbe_images/100-over", directory))
 
+def delete_EDMS():
+    for directory in os.listdir("/media/chasuelt/MICROBES/microbe_images/"):
+        for file in os.listdir(os.path.join("/media/chasuelt/MICROBES/microbe_images/", directory)):
+            if file[:4] == "EMDS":
+                os.remove(os.path.join("/media/chasuelt/MICROBES/microbe_images/", directory, file))
+
+
 
 total = 0
-for directory in os.listdir("/mnt/c/Users/paige/Desktop/microbe_images/"):
+for directory in os.listdir("/media/chasuelt/MICROBES/microbe_images/"):
     count = 0
-    for file in os.listdir(os.path.join("/mnt/c/Users/paige/Desktop/microbe_images/", directory)):
+    for file in os.listdir(os.path.join("/media/chasuelt/MICROBES/microbe_images/", directory)):
         count += 1
         total += 1
     print(directory, count)
