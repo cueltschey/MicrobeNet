@@ -58,8 +58,8 @@ def train_cnn_with_efficientnetv2(train_dir, validation_dir, input_shape, num_cl
 # Example usage:
 train_dir = '/media/chasuelt/MICROBES/training_dataset/'
 validation_dir = '/media/chasuelt/MICROBES/validation_dataset/'
-input_shape = (96, 64, 3)  # Adjust based on your image size and channels
-num_classes = 168  # Adjust based on the number of categories
+input_shape = (200, 200, 3)  # Adjust based on your image size and channels
+num_classes = 6  # Adjust based on the number of categories
 
 trained_model = train_cnn_with_efficientnetv2(train_dir, validation_dir, input_shape, num_classes)
 trained_model.save("/media/chasuelt/MICROBES/model_v0")
