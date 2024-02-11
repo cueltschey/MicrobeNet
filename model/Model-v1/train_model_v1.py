@@ -64,7 +64,7 @@ def train_model_v1(train_generator):
 train_dir = '/media/chasuelt/MICROBES/training_dataset/'
 
 # Define parameters
-batch_size = 6
+batch_size = 204
 img_height = 200
 img_width = 200
 epochs = 10

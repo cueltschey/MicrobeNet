@@ -13,7 +13,7 @@ def resize_and_copy(input_dir, output_dir, target_size=(200, 200)):
     # List all files in the input directory
     files = os.listdir(input_dir)
 
-    for file_name in files[:50]:
+    for file_name in files:
         input_path = os.path.join(input_dir, file_name)
         output_path = os.path.join(output_dir, file_name)
         output_path_v = os.path.join(output_dir, "vertical_" + file_name)
@@ -39,8 +39,11 @@ def resize_and_copy(input_dir, output_dir, target_size=(200, 200)):
             img_horizontal.save(output_path_h)
 
 if __name__ == "__main__":
-    input_base = "/media/chasuelt/MICROBES/microbe_images/"
-    output_base = "/media/chasuelt/MICROBES/validation_dataset/"
+    input_base = "/media/chasuelt/MICROBES/unfiltered_images/"
+    output_base = "/media/chasuelt/MICROBES/training_dataset/"
     target_size = (200, 200)
     for directory_name in os.listdir(input_base):
-        resize_and_copy(os.path.join(input_base, directory_name), os.path.join(output_base, directory_name), target_size)
+        try:
+            resize_and_copy(os.path.join(input_base, directory_name), os.path.join(output_base, directory_name), target_size)
+        except:
+            continue
