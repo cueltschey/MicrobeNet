@@ -1,7 +1,7 @@
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
-import { useState } from 'react';
-import Model from './components/Model/Model';
+import React, { useState } from 'react';
+import ImageUploader from './components/Model/ImageProcess';
 
 function App() {
   const [page, setPage] = useState(0);
@@ -14,7 +14,7 @@ function App() {
     <>
        <Navbar page={page} changePage={changePage}/> 
       <div className='main'>
-       <Model/>
+       <ImageUploader/>
       </div>
     </>
   )
