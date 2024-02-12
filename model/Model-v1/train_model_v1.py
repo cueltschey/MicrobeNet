@@ -57,14 +57,13 @@ def train_model_v1(train_generator):
 # Evaluate the model
     loss, accuracy = model.evaluate(train_generator)
     print(f'Training accuracy: {accuracy * 100:.2f}%')
-    model.save("/media/chasuelt/MICROBES/Model-v1")
     return accuracy, loss
 
 # Define the directory containing your images
 train_dir = '/media/chasuelt/MICROBES/training_dataset/'
 
 # Define parameters
-batch_size = 204
+batch_size = 7
 img_height = 200
 img_width = 200
 epochs = 10
