@@ -20,8 +20,8 @@ for dirname in os.listdir(stats_dir):
     total += count
     total_percent += viable_percent
     total_viable += viable_images_count
-    print(f"{dirname}: Viable({viable_images_count}) {viable_percent}%\n")
+    print(f"{dirname:<20} Viable:{viable_images_count:<10} {viable_percent}%\n")
 
 total_percent /= len(os.listdir(stats_dir))
-print(f"\n\nTotal: Viable:{total_viable} {total_percent}% Total:{total}\n\n")
+print(f"\n\nTotal: Viable:{total_viable:<10} {total_percent:<10}% Total:{total:<10}\n\n")
 
