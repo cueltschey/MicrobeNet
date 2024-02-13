@@ -3,7 +3,7 @@ import os
 import json
 import time
 
-driver = create_chrome_driver("http://plankton.image.coocan.jp/algae1-1-2.html")
+driver = create_chrome_driver("http://plankton.image.coocan.jp/algae1-1-1.html")
 
 output_path = "/mnt/c/Users/paige/Desktop/coocan"
 
