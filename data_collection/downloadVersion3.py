@@ -19,19 +19,15 @@ def download_images(filename):
     count = random.randint(500,1000) * 1000
     for item in results[3:]:
         count += 1
-        genus = ""
-        if item["name"].split(" ")[0] == "Genus":
-            genus = item["name"].split(" ")[1]
-        else:
-            genus = item["name"].split(" ")[0]
-        print(f"Dowloading v1_{count}.jpg into folder {os.path.join(desk_path, filename[:-5])}")
+        genus = item["name"]
+        print(f"Dowloading realmicro_{count}.jpg into folder {os.path.join(desk_path, genus)}")
         if item["image_url"][1:-1].split(".")[-1] in ["gif", ".gif", "GIF", ".GIF"]:
-            d.download_gif(item["image_url"][1:-1], os.path.join(desk_path, filename[:-5]), f"realmicro_{count}.jpg")
+            d.download_gif(item["image_url"], os.path.join(desk_path, genus), f"realmicro_{count}.jpg")
         else:
-            d.download_jpg(item["image_url"][1:-1], os.path.join(desk_path, filename[:-5]), f"realmicro_{count}.jpg")
+            d.download_jpg(item["image_url"], os.path.join(desk_path, genus), f"realmicro_{count}.jpg")
         
 for filename in os.listdir(json_path):
-    if filename == "python" or filename == "__pycache__":
+    if filename.split(".")[1] != "json":
         continue
     download_images(filename)
 

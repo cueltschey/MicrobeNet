@@ -3,7 +3,7 @@ import time
 import json
 import os
 
-primary_url = "https://realmicrolife.com/all-procaryonts/"
+primary_url = "https://realmicrolife.com/all-gastrotrichs/"
 
 
 def get_page_links(url):
@@ -23,8 +23,8 @@ def get_page_links(url):
 def get_images(url):
     driver = create_chrome_driver(url)
     results = list()
-    time.sleep(4)
-    for _ in range(4):
+    time.sleep(5)
+    for _ in range(6):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         for item in driver.find_elements("xpath", "//img[contains(@class, 'size-full')]"):
             new_entry = dict()
@@ -43,7 +43,7 @@ for link in links:
     count += 1
     print("Visiting link: ", link)
     results = get_images(link)
-    with open(os.path.join("/mnt/c/Users/paige/Desktop/realmicrolife", f"real_{count}.json"), "w") as f:
+    with open(os.path.join("/mnt/c/Users/paige/Desktop/realmicrolife", f"gastrotrichs_{count}.json"), "w") as f:
         json.dump(results, f, indent=4)
 
 
