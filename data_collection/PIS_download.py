@@ -14,8 +14,8 @@ def download_jpg(url, folder_path, filename):
                 file.write(chunk)
 
 
-output_dir = "/mnt/c/Users/paige/Desktop/microbe_images/"
-input_dir = "/mnt/c/Users/paige/Desktop/json_finished/"
+output_dir = "/media/chasuelt/MICROBES/microbe_images/"
+input_dir = "/media/chasuelt/MICROBES/finished_json/"
 
 name_count = random.randint(300, 1000)
 

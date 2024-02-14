@@ -6,8 +6,8 @@ import random
 d = Downloader()
 results = list()
 
-json_path = "/mnt/c/Users/paige/Desktop/realmicrolife/"
-finished_path = "/mnt/c/Users/paige/Desktop/finished/"
+json_path = "/media/chasuelt/MICROBES/realmicrolife/"
+finished_path = "/media/chasuelt/MICROBES/finished_json/"
 
 def download_images(filename):
     with open(os.path.join(json_path, filename), "r") as f:
@@ -16,7 +16,7 @@ def download_images(filename):
 
 
     desk_path = "/mnt/c/Users/paige/Desktop/microbe_images/"
-    count = random.randint(500,1000) * 1000
+    count = random.randint(1000,2000) * 1000
     for item in results[3:]:
         count += 1
         genus = ""
