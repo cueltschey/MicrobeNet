@@ -15,7 +15,7 @@ def get_length(directory, file):
     analysis.append({filepath:count})
     return count
 
-directory = "/media/chasuelt/MICROBES/realmicrolife/"
+directory = "/mnt/c/Users/paige/Desktop/sinicearasy/"
 total = 0
 
 for filename in os.listdir(directory):
