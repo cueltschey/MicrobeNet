@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+import os
 
 # convert image to greyscale array
 def processImage(image): 
@@ -164,22 +165,64 @@ def embossing_convolve(image_path, output_path, padding=0):
     output = convolveX(image, kernelX)
     cv2.imwrite(output_path, output)
 
+def bold_sharpening_convolve(image_path, output_path, padding=0):
+    image = processImage(image_path)
+    kernelX = np.array([[-1, -1, -1],
+                        [-1, 9, -1],
+                        [-1, -1, -1]])
+    output = convolveX(image, kernelX)
+    cv2.imwrite(output_path, output)
+
+def laplacian_convolve(image_path, output_path, padding=0):
+    image = processImage(image_path)
+    kernelX = np.array([[0, 1, 0],
+                        [1, -4, 1],
+                        [0, 1, 0]])
+    output = convolveX(image, kernelX)
+    cv2.imwrite(output_path, output)
+
+
+def scharr_convolve(image_path, output_path, padding=0):
+    scharr_kernel_real = np.array([[-3, 0, 3],
+                                   [-10, 0, 10],
+                                   [-3, 0, 3]])
+
+    scharr_kernel_imaginary = np.array([[-3, -10, -3],
+                                        [0, 0, 0],
+                                        [3, 10, 3]])
+    image = processImage(image_path)
+    output_real = convolveX(image, scharr_kernel_real)
+    output_imaginary = convolveX(image, scharr_kernel_imaginary)
+    output = np.sqrt(output_real**2 + output_imaginary**2)
+    cv2.imwrite(output_path, output)
 
 
 
 
 if __name__ == '__main__':
     # Grayscale Image
-    image_path = "/media/chasuelt/MICROBES/microbe_images/Amoeba/v1_225013.jpg"
-    output_path = "/media/chasuelt/MICROBES/convolutions/guassian.jpg"
-    guassian_convolve(image_path, output_path, padding=2)
-    output_path = "/media/chasuelt/MICROBES/convolutions/sobel.jpg"
-    sobel_convolve(image_path, output_path, padding=2)
-    output_path = "/media/chasuelt/MICROBES/convolutions/embossing.jpg"
-    embossing_convolve(image_path, output_path, padding=2)
-    output_path = "/media/chasuelt/MICROBES/convolutions/sharpening.jpg"
-    sharpening_convolve(image_path, output_path, padding=2)
-    output_path = "/media/chasuelt/MICROBES/convolutions/roberts.jpg"
-    roberts_convolve(image_path, output_path, padding=2)
-    output_path = "/media/chasuelt/MICROBES/convolutions/prewitt.jpg"
-    prewitt_convolve(image_path, output_path, padding=2)
+
+    image_base = "/mnt/c/Users/paige/Desktop/old_microbe_images/Desmodesmus/"
+    count = 0
+    
+    for image_name in os.listdir(image_base)[:10]:
+        count += 1
+        image_path = os.path.join(image_base, image_name)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/guassian_{count}.jpg"
+        guassian_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/sobel_{count}.jpg"
+        sobel_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/embossing_{count}.jpg"
+        embossing_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/sharpening_{count}.jpg"
+        sharpening_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/roberts_{count}.jpg"
+        roberts_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/prewitt_{count}.jpg"
+        prewitt_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/bold_{count}.jpg"
+        bold_sharpening_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/laplacian_{count}.jpg"
+        laplacian_convolve(image_path, output_path, padding=2)
+        output_path = f"/mnt/c/Users/paige/Desktop/convolutions/scharr_{count}.jpg"
+        scharr_convolve(image_path, output_path, padding=2)
