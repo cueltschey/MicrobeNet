@@ -304,18 +304,8 @@ genera_in_amoeba = [
     # Add more genera here if needed
 ]
 
-Haptophyta = [
 
-        ]
-
-Rhodophyta = [
-
-        ]
-
-Streptophyta = [
-
-        ]
-genera_in_achnanthidiaceae = [
+genera_in_achnanthidiaceae = {
     "Achnanthes",
     "Achnanthidium",
     "Amphora",
@@ -336,12 +326,60 @@ genera_in_achnanthidiaceae = [
     "Stauroneis",
     "Surirella",
     # Add more genera here if needed
+}
+
+genera_tetrasporaceae = [
+    "Apiocystis",
+    "Tetraspora",
+    "Delesseria",
+    "Solieria",
+    "Chondrus",
+    "Ahnfeltiopsis",
+    "Gigartina",
+    "Mastocarpus",
+    "Calliblepharis",
+    "Cryptopleura",
+    "Gracilariopsis",
+    "Galaxaura",
+    "Gymnogongrus",
+    "Herposiphonia",
+    "Neogoniolithon",
+    "Pterocladia",
+    "Ralfsia",
+    "Spyridia",
+    "Tetrasporopsis",
+    "Falkenbergia",
+    "Goniotrichum",
+    "Petrocelis",
+    "Rhodymenia",
+    "Thamnoclonium",
+    "Halarachnion",
+    "Mazaedium",
+    "Nitophyllum",
+    "Pterothamnion",
+    "Sarcophyllis",
+    "Streblonema",
+    "Trichogloea",
+    "Wilsonosiphonia",
+    "Dasyphloea",
+    "Gomontia",
+    "Herposiphonia",
+    "Martensia",
+    "Phyllophora",
+    "Suhria",
+    "Ptilophora",
+    "Physematium",
+    "Gloiosaccion",
+    "Thorea"
+    # You can continue adding more genera as needed
 ]
+
 
 base_path = "/mnt/c/Users/paige/Desktop/old_microbe_images/"
 
 for dirname in os.listdir(base_path):
-    if dirname in genera_in_achnanthidiaceae:
+    print(dirname)
+    if dirname in genera_tetrasporaceae:
         print("moving: ", dirname)
-        os.rename(os.path.join(base_path, dirname), os.path.join("/mnt/c/Users/paige/Desktop/achnanthidiaceae", dirname))
+        os.rename(os.path.join(base_path, dirname), os.path.join("/mnt/c/Users/paige/Desktop/tetrasporaceae", dirname))
 
