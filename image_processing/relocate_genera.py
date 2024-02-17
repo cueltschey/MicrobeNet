@@ -374,12 +374,84 @@ genera_tetrasporaceae = [
     # You can continue adding more genera as needed
 ]
 
+genera_catenulaceae = {
+    "Catenula",
+    "Stenostomum",
+    "Rhynchoscolex",
+    "Prorhynchoides",
+    "Microstomum",
+    "Rhamnostomum",
+    "Stenostomoides",
+    "Stenostomopsis",
+    "Neocatenula",
+    "Paracatenula",
+    "Limnocatenula",
+    "Sphincterostomum",
+    "Zeldia",
+    "Winkleria",
+    "Prostomum",
+    "Stenostomum",
+    "Rugaho",
+    "Catoscopium",
+    "Chaetonotus",
+    "Rhynchomesostoma",
+    "Crenobia",
+    "Diplodasys",
+    "Stenostoma",
+    "Neoprotoplanella",
+    "Rhynchodemus",
+    "Catenicella",
+    "Cateniphagus",
+    "Dichotomomacrostomum",
+    "Catenodiplodasys",
+    "Catenoporus",
+    "Catenoplana",
+    "Catenuloides",
+    "Catenulostomum",
+    "Cratera",
+    "Echinocatenula",
+    "Enchelidium",
+    "Mesostoma",
+    "Opistomum",
+    "Paropisthomon",
+    "Prorhynchus",
+    "Rhynchozoon",
+    "Spathidium",
+    "Uteriporpa"
+    # You can continue adding more genera as needed
+}
 
-base_path = "/mnt/c/Users/paige/Desktop/old_microbe_images/"
+
+base_path = "/media/chasuelt/MICROBES/microbe_images/"
+outpath = "/media/chasuelt/MICROBES/organized"
 
 for dirname in os.listdir(base_path):
-    print(dirname)
     if dirname in genera_tetrasporaceae:
         print("moving: ", dirname)
-        os.rename(os.path.join(base_path, dirname), os.path.join("/mnt/c/Users/paige/Desktop/tetrasporaceae", dirname))
+        if not os.path.exists(os.path.join(outpath, "tetrasporaceae")):
+            os.mkdir(os.path.join(outpath, "tetrasporaceae"))
+        os.rename(os.path.join(base_path, dirname), os.path.join(outpath, "tetrasporaceae", dirname))
+    elif dirname in genera_in_amoeba:
+        if not os.path.exists(os.path.join(outpath, "amoeba")):
+            os.mkdir(os.path.join(outpath, "amoeba"))
+        print("moving: ", dirname)
+        os.rename(os.path.join(base_path, dirname), os.path.join(outpath, "amoeba", dirname))
+    elif dirname in genera_in_dinophyta:
+        if not os.path.exists(os.path.join(outpath, "dinophyta")):
+            os.mkdir(os.path.join(outpath, "dinophyta"))
+        print("moving: ", dirname)
+        os.rename(os.path.join(base_path, dirname), os.path.join(outpath, "dinophyta", dirname))
+    elif dirname in genera_in_euglenophyta:
+        if not os.path.exists(os.path.join(outpath, "euglenophyta")):
+            os.mkdir(os.path.join(outpath, "euglenophyta"))
+        print("moving: ", dirname)
+        os.rename(os.path.join(base_path, dirname), os.path.join(outpath, "euglenophyta", dirname))
+    elif dirname in genera_catenulaceae:
+        if not os.path.exists(os.path.join(outpath, "catenulaceae")):
+            os.mkdir(os.path.join(outpath, "catenulaceae"))
+        print("moving: ", dirname)
+        os.rename(os.path.join(base_path, dirname), os.path.join(outpath, "catenulaceae", dirname))
+
+
+
 
