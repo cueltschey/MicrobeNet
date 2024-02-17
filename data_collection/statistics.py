@@ -6,6 +6,7 @@ stats_dir = "/media/chasuelt/MICROBES/microbe_images/"
 total_viable = 0
 total_percent = 0
 total = 0
+
 for dirname in os.listdir(stats_dir):
     viable_images_count = 0
     count = 0
@@ -27,4 +28,5 @@ for dirname in os.listdir(stats_dir):
 total_percent /= len(os.listdir(stats_dir))
 print(f"\n\nTotal: Viable:{total_viable:<10} {total_percent:<10}% Total:{total:<10}\n\n")
 print(f"Total per genera: {(total * (total_percent / 100))/ len(os.listdir(stats_dir))}")
+print(f"Average Viable per genus: {total_viable / len(os.listdir(stats_dir))}")
 
