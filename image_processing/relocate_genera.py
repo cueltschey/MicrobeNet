@@ -426,6 +426,8 @@ base_path = "/media/chasuelt/MICROBES/microbe_images/"
 outpath = "/media/chasuelt/MICROBES/organized"
 
 for dirname in os.listdir(base_path):
+    print(dirname)
+    """
     if dirname in genera_tetrasporaceae:
         print("moving: ", dirname)
         if not os.path.exists(os.path.join(outpath, "tetrasporaceae")):
@@ -451,6 +453,7 @@ for dirname in os.listdir(base_path):
             os.mkdir(os.path.join(outpath, "catenulaceae"))
         print("moving: ", dirname)
         os.rename(os.path.join(base_path, dirname), os.path.join(outpath, "catenulaceae", dirname))
+"""
 
 
 

@@ -15,7 +15,7 @@ def download_images(filename):
     os.rename(os.path.join(json_path, filename), os.path.join(finished_path, filename))
 
 
-    desk_path = "/media/chasuelt/MICROBES/microbe_images/"
+    desk_path = "/home/chasuelt/Desktop/microbe_images/"
     count = random.randint(500,1000) * 1000
     for item in results[3:]:
         count += 1

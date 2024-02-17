@@ -3,10 +3,6 @@ from PIL import Image
 
 def resize_and_copy(input_dir, output_dir, target_size=(200, 200)):
 
-    if len(os.listdir(input_dir)) < 200:
-        print("\n\nDirectory Too Small: Skipping\n\n")
-        return
-
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -39,11 +35,12 @@ def resize_and_copy(input_dir, output_dir, target_size=(200, 200)):
             img_horizontal.save(output_path_h)
 
 if __name__ == "__main__":
-    input_base = "/media/chasuelt/MICROBES/unfiltered_images/"
+    input_base = "/media/chasuelt/MICROBES/organized/"
     output_base = "/media/chasuelt/MICROBES/training_dataset/"
     target_size = (200, 200)
     for directory_name in os.listdir(input_base):
         try:
             resize_and_copy(os.path.join(input_base, directory_name), os.path.join(output_base, directory_name), target_size)
         except:
+            print("fail")
             continue
