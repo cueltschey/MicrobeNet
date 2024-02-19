@@ -31,10 +31,23 @@ class ModelTester:
 
 if __name__ == "__main__":
     model_path = "/home/chasuelt/Desktop/Trained_Models/MicrobeNetV2/MicrobeNetV2P.h5"
-    image_path = "/media/chasuelt/MICROBES/organized/chlorellic/Chlorella/EMDS7-G009-012-0400.png"
+    image_path = "/media/chasuelt/MICROBES/organized/colonial/"
     training_dir = "/media/chasuelt/MICROBES/v1-datasets/training_dataset/"
-
+    
+    correct = 0
+    count = 0
+    local_stats = list()
     tester = ModelTester(model_path)
-    prediction = tester.test_image(image_path)
     categories = tester.get_classifications_from_directory(training_dir)
-    print("Prediction:", categories[np.argmax(prediction)])
+    for dirname in os.listdir(image_path):
+        local_correct = 0
+        for image_name in os.listdir(os.path.join(image_path, dirname)):
+            prediction = tester.test_image(os.path.join(image_path, dirname, image_name))
+            count += 1
+            print("Prediction:", categories[np.argmax(prediction)])
+            if categories[np.argmax(prediction)] == "colonial":
+                correct += 1
+                local_correct += 1
+        local_stats.append(local_correct / len(os.listdir(os.path.join(image_path, dirname))))
+        print(f"\n\n\n{local_stats}\n\n\n")
+    print(f"Accuracy: {correct / count}")
