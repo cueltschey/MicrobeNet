@@ -1,17 +1,24 @@
+# MicrobeNet Open Source Microbiology Neural Network
+
+## Model Architecture
+
+## Information on Versions
+
+**Version 0**: (here)[./model/Model-v0/V0.md]
+**Version 1**: (here)[./model/Model-v1/V1.md]
+**Version 2**: (here)[./model/Model-v2/V2.md]
+**Version 3**: (here)[./model/Model-v3/V3.md]
 
 
 
-# Free and Open Source Microbe Identifier
+## Publications
 
-This is a free to use Convolutional Neural Network that can Identify Microbes based on images
-
-## Reactjs and Express Frontend
-Public Website for interfacing with the model
-
-## TensorFlow Model
-Uses EfficiencyNetV5 model as a base.
-Over 0.5 Million training images, collected from the internet.
+## About the Author
 
 
+
+
+
+(LISCENCE)[./LISCENCE]
 
 
