@@ -8,14 +8,10 @@
 | $$ \$$$| $| $| $$_____| $$     | $$__/ $| $$__/ $| $$$$$$$| $$ \$$$| $$$$$$$$| $$|  \
 | $$  \$ | $| $$\$$     | $$      \$$    $| $$    $$\$$     | $$  \$$$\$$     \ \$$  $$
  \$$      \$$\$$ \$$$$$$$\$$       \$$$$$$ \$$$$$$$  \$$$$$$$\$$   \$$ \$$$$$$$  \$$$$ 
-                                                                                       
-                                                                                       
-                                                                                       
+
 ```
 
-
-
-# MicrobeNet Open Source Microbiology Neural Network
+# Open Source Microbiology Neural Network
 
 ## Model Architecture
 
