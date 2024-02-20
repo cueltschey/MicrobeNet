@@ -1,6 +1,7 @@
 from Bio import Entrez, SeqIO
 import os
 import json
+import time
 
 def get_taxonomy_info(genus_name):
     Entrez.email = "chaseuelt@gmail.com"  # Enter your email here
@@ -19,10 +20,15 @@ def get_taxonomy_info(genus_name):
     return result
 
 results = dict()
-input_dir = "/media/chasuelt/MICROBES/microbe_images/"
-for dirname in os.listdir(input_dir):
-    genus_name = input("Enter genus name: ")
-    results[genus_name] = get_taxonomy_info(genus_name)
+input_dir = "/home/chasuelt/Desktop/Backup_Images/"
+for genus_name in os.listdir(input_dir):
+    try:
+        print(genus_name)
+        time.sleep(0.3)
+        results[genus_name] = get_taxonomy_info(genus_name)
+        print(results[genus_name])
+    except:
+        continue
 
 with open("/media/chasuelt/MICROBES/index.json", "w") as f:
     json.dump(results, f, indent=4)
