@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 install_path="/home/chaseuelt/google-cloud-sdk"
 
 if [ -d "$install_path" ]; then
@@ -14,9 +14,9 @@ fi
 
 
 if [ -d "$1" ]; then
-  ~/google-cloud-sdk/bin/gcloud compute scp $1 --compress --recurse instance-20240218-025258:/home/chaseuelt/	--zone=us-west4-b
+  ~/google-cloud-sdk/bin/gcloud compute scp $1 --compress --recurse instance-20240222-040918:/home/chaseuelt/	--zone=us-east5-a	
 elif [ -f "$1" ]; then
-  ~/google-cloud-sdk/bin/gcloud compute scp $1 --compress instance-20240218-025258:/home/chaseuelt/	--zone=us-west4-b
+  ~/google-cloud-sdk/bin/gcloud compute scp $1 --compress instance-20240222-040918:/home/chaseuelt/	--zone=us-east5-a	
 fi
 
 echo "SCP complete"
