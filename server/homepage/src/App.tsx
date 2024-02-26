@@ -11,9 +11,10 @@ function App() {
   const pages = ["Classify", "Learn", "Donate", "More"]
   document.title = "testing"
   return (
-    <>
+    <div className='main'>
       <Navbar page={page} changePage={changePage} pages={pages} />
-    </>
+      <div className='page'></div>
+    </div>
   )
 }
 

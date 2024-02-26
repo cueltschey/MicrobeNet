@@ -10,11 +10,11 @@
 }
 
 .navitem {
-  font-size: 20px;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
 }
 
 .navitem.active {
-  color: red;
+  color: var(--secondary);
 }
