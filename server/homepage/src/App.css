@@ -8,12 +8,13 @@ body {
 
 .main {
   display: flex;
+  flex-direction: column;
   gap: 0px;
   background-color: var(--primary);
   color: var(--tertiary);
 }
 
 .page {
-  background-color: var(--secondary);
+  background-color: var(--quaternary);
   height: 100vh;
 }

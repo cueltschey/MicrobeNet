@@ -1,6 +1,7 @@
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import { useState } from 'react'
+import Upload from "./components/Upload/Upload.tsx"
 
 
 function App() {
@@ -13,7 +14,9 @@ function App() {
   return (
     <div className='main'>
       <Navbar page={page} changePage={changePage} pages={pages} />
-      <div className='page'></div>
+      <div className='page'>
+        {page === 0 ? <Upload /> : "two"}
+      </div>
     </div>
   )
 }
