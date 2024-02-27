@@ -21,7 +21,11 @@ const Upload = () => {
         method: 'POST',
         body: formData,
       });
-      // Handle response as needed
+      if (response.status == 200) {
+        console.log(response)
+      } else {
+        console.error(response)
+      }
     } catch (error) {
       console.error('Error uploading file:', error);
     }
