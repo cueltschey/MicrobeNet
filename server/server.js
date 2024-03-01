@@ -26,7 +26,7 @@ const upload = multer({ storage: storage })
 
 // Load your model here
 const get_model = async () => {
-  const model = tf.loadLayersModel('file:///home/chasuelt/Desktop/Trained_Models/MicrobeNetV3/MicrobeNetV3_unclassified.h5'); 
+  const model = tf.loadLayersModel('file://usable_model/model.json')
   console.log(model.summary())
   return model
 }
