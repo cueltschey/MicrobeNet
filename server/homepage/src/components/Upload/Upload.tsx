@@ -1,43 +1,35 @@
-// Upload.js
-
-import { useState } from 'react';
+import "./Upload.css"
+import axios from "axios";
 
 const Upload = () => {
-  const [file, setFile] = useState(null);
-
-  const handleFileChange = (e: any) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-  };
-
-  const handleSubmit = async () => {
-    if (!file) return;
-
+  const handleFileUpload = (event: any) => {
+    // get the selected file from the input
+    const file = event.target.files[0];
+    // create a new FormData object and append the file to it
     const formData = new FormData();
-    formData.append('image', file);
-
-    try {
-      const response = await fetch('/classify', {
-        method: 'POST',
-        body: formData,
+    formData.append("image", file, file.name);
+    // make a POST request to the File Upload API with the FormData object and Rapid API headers
+    axios
+      .post("/classify", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          'Accept-Language': 'en-US,en;q=0.8',
+        },
+      })
+      .then((response) => {
+		// handle the response
+        console.log(response);
+      })
+      .catch((error) => {
+        // handle errors
+        console.log(error);
       });
-      if (response.status == 200) {
-        console.log(response)
-      } else {
-        console.error(response)
-      }
-    } catch (error) {
-      console.error('Error uploading file:', error);
-    }
   };
-
+  // render a simple input element with an onChange event listener that calls the handleFileUpload function
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleSubmit}>Upload</button>
+      <input type="file" onChange={handleFileUpload} />
     </div>
   );
 };
-
 export default Upload;
-
