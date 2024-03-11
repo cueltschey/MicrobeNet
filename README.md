@@ -28,8 +28,6 @@ It is the first attempt at a network capable of classifying any microorganism.
 * **Version 2**: [here](./model/Model-v2/V2.md)
 * **Version 3**: [here](./model/Model-v3/V3.md)
 
-## Publications
-
 ## Contributors
 
 Charles Ueltschey: chaseuelt@gmail.com
