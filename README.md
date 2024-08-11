@@ -1,4 +1,4 @@
-```
+8```
  __       __ __                            __                __    __           __     
 |  \     /  |  \                          |  \              |  \  |  \         |  \    
 | $$\   /  $$\$$ _______  ______   ______ | $$____   ______ | $$\ | $$ ______ _| $$_   
@@ -27,12 +27,6 @@ It is the first attempt at a network capable of classifying any microorganism.
 * **Version 1**: [here](./model/Model-v1/V1.md)
 * **Version 2**: [here](./model/Model-v2/V2.md)
 * **Version 3**: [here](./model/Model-v3/V3.md)
-
-## Contributors
-
-Charles Ueltschey: chaseuelt@gmail.com
-Portfolio: [here](https://charles-ueltschey-portfolio.netlify.app/)
-Resume: [here](./documentation/)
 
 
 [LISCENCE](./documentation/LISCENCE)
